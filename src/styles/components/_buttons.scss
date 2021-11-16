@@ -1,0 +1,11 @@
+.back__button,
+.search__button {
+  height: 4.5rem;
+  width: 4.5rem;
+  background: $secondary-color;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  color: $white;
+  outline: 0;
+  cursor: pointer;
+}

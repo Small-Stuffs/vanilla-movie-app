@@ -4,13 +4,12 @@ nav {
   justify-content: space-between;
   // background-color: black;
   padding: 3rem;
-  .movie__heading {
-    font-size: 2rem;
-    font-weight: 600;
-    text-align: center;
-    text-transform: uppercase;
-    
-  }
+}
+.movie__heading {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
 }
 .logo {
   background-color: $secondary-color;
@@ -32,16 +31,6 @@ nav {
     width: 0;
     opacity: 0;
     transition: 0.3s all ease;
-  }
-  .search__button {
-    height: 4.5rem;
-    width: 4.5rem;
-    background: $secondary-color;
-    border-radius: 0.5rem;
-    font-size: 2rem;
-    color: $white;
-    outline: 0;
-    cursor: pointer;
   }
 }
 .search__input--open {
