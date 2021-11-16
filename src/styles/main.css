@@ -39,6 +39,7 @@ button {
 
 svg {
   fill: yellow;
+  transform: scale(0.7);
 }
 
 /*
