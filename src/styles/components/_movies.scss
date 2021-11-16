@@ -1,11 +1,12 @@
 .movies {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
   margin: 1rem;
   &__card {
     background-color: $secondary-color;
     padding: 1rem;
-    margin: 1rem;
+    margin: 0.5rem;
     border-radius: 5px;
     height: auto;
     width: 20rem;

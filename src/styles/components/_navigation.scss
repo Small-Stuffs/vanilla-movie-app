@@ -28,8 +28,8 @@ nav {
   margin: auto 0;
   position: relative;
   .search__input {
-    width: 0;
-    opacity: 0;
+    width: 10;
+    // opacity: 0;
     transition: 0.3s all ease;
   }
 }

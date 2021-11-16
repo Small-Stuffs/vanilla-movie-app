@@ -41,16 +41,24 @@ svg {
   fill: yellow;
 }
 
+/*
+Animations
+*/
 .details {
   z-index: 10;
   position: fixed;
   width: 100%;
   height: 100%;
   top: 0;
-  right: 0;
+  right: -100%;
   background-color: #050e16;
   -webkit-overflow-scrolling: touch;
   overflow-y: auto;
+  transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+body.is-active .details {
+  transform: translateX(-100%);
 }
 
 .info__img {
@@ -147,8 +155,7 @@ nav {
 }
 
 .search__form .search__input {
-  width: 0;
-  opacity: 0;
+  width: 10;
   transition: 0.3s all ease;
 }
 
@@ -160,13 +167,14 @@ nav {
 .movies {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
   margin: 1rem;
 }
 
 .movies__card {
   background-color: #0c1f2c;
   padding: 1rem;
-  margin: 1rem;
+  margin: 0.5rem;
   border-radius: 5px;
   height: auto;
   width: 20rem;
