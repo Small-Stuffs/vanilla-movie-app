@@ -30,6 +30,8 @@ const searchForm = document.querySelector(".search__form");
 const movies = document.querySelector(".movies");
 const searchInput = document.querySelector(".search__input");
 
+let resultsContent = "";
+
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -39,6 +41,36 @@ searchForm.addEventListener("submit", (e) => {
   axios
     .get(searchQuery)
     .then((response) => {
+      const results = response.data.results;
+      /**
+       * MOVIES CARD
+       */
+      results.map((result) => {
+        resultsContent += `      <a href="#" class="movies__card">
+        <div class="movie__img">
+          <img
+            src="./images/alice-in-borderland-poster.jpg"
+            alt="movie-image"
+            class="movies__img-src"
+          />
+        </div>
+        <div class="movies__content">
+          <h2 class="movies__title">Alice in Borderland</h2>
+        </div>
+        <div class="movies__details">
+          <div class="movies__year">2010</div>
+          <div class="movies__rating">
+            <span>6.5</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+              <path
+                d="m12 .587 3.668 7.568L24 9.306l-6.064 5.828 1.48 8.279L12 19.446l-7.417 3.967 1.481-8.279L0 9.306l8.332-1.151z"
+              />
+            </svg>
+          </div>
+        </div>
+      </a>`;
+      });
+      movies.innerHTML = resultsContent;
       console.log("data", response);
     })
     .catch((error) => {
