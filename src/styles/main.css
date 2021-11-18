@@ -179,6 +179,7 @@ nav {
   border-radius: 5px;
   height: auto;
   width: 20rem;
+  pointer-events: none;
 }
 
 .movies__content {
@@ -189,6 +190,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  pointer-events: none;
 }
 
 .movies__rating {

@@ -6,7 +6,7 @@ const API_KEY = "c1018a330183f93ffcc6df16fbfe581f";
 Listeners
 */
 const body = document.querySelector("body");
-const linkList = [...document.querySelectorAll(".movies__card")];
+// const linkList = [...document.querySelectorAll(".movies__card")];
 const backBtn = document.querySelector(".back__button");
 
 // linkList.map((list) => {
@@ -30,17 +30,26 @@ backBtn.addEventListener("click", function () {
 const searchForm = document.querySelector(".search__form");
 const movies = document.querySelector(".movies");
 const searchInput = document.querySelector(".search__input");
-
+// const moviesC = document.querySelector('')
 let resultsContent = "";
+/**
+ * DETAILS PAGE
+ */
+// const linkList = document.querySelector(".movies__card");
 
-movies.addEventListener("click", (e) => {
-  // if (e.target.classList.contains("movies__card-src")) {
-  e.preventDefault();
-  body.classList.toggle("is-active");
-  console.log("cloked", e);
-  // }
-  // console.log("cloked", e);
-});
+// movies.addEventListener("click", (e) => {
+//   if (e.target.children) {
+//     const tryLang = e.target.children;
+
+//     e.preventDefault();
+//     body.classList.toggle("is-active");
+// const movieId = e.target.getAttribute("data-id");
+//     const detailsQuery = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`;
+//     console.log("cloked", movieId);
+//     console.log(detailsQuery);
+//   }
+//   // console.log("cloked", tryLang);
+// });
 
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -58,7 +67,7 @@ searchForm.addEventListener("submit", (e) => {
       results.map((result) => {
         // const year = result.release_date.split("-")[1];
 
-        resultsContent += `      <a href="#" class="movies__card">
+        resultsContent += `      <a href="#" class="movies__card" id = "${result.id}">
         <div class="movie__img">
           <img
             src="https://image.tmdb.org/t/p/w500/${result.poster_path}"
@@ -84,6 +93,9 @@ searchForm.addEventListener("submit", (e) => {
       });
       movies.innerHTML = resultsContent;
       console.log("data", response);
+      movies.addEventListener("click", (e) => {
+        console.log("ge");
+      });
     })
     .catch((error) => {
       console.log(error);
