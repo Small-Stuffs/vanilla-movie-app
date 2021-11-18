@@ -8,13 +8,14 @@ Listeners
 const body = document.querySelector("body");
 const linkList = [...document.querySelectorAll(".movies__card")];
 const backBtn = document.querySelector(".back__button");
-linkList.map((list) => {
-  list.addEventListener("click", (e) => {
-    e.preventDefault();
-    body.classList.toggle("is-active");
-    // body.style = "display:none;";
-  });
-});
+
+// linkList.map((list) => {
+//   list.addEventListener("click", (e) => {
+//     e.preventDefault();
+//     body.classList.toggle("is-active");
+//     // body.style = "display:none;";
+//   });
+// });
 
 backBtn.addEventListener("click", function () {
   // body.style = "display:none;";
@@ -32,6 +33,15 @@ const searchInput = document.querySelector(".search__input");
 
 let resultsContent = "";
 
+movies.addEventListener("click", (e) => {
+  // if (e.target.classList.contains("movies__card-src")) {
+  e.preventDefault();
+  body.classList.toggle("is-active");
+  console.log("cloked", e);
+  // }
+  // console.log("cloked", e);
+});
+
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -46,21 +56,23 @@ searchForm.addEventListener("submit", (e) => {
        * MOVIES CARD
        */
       results.map((result) => {
+        // const year = result.release_date.split("-")[1];
+
         resultsContent += `      <a href="#" class="movies__card">
         <div class="movie__img">
           <img
-            src="./images/alice-in-borderland-poster.jpg"
+            src="https://image.tmdb.org/t/p/w500/${result.poster_path}"
             alt="movie-image"
             class="movies__img-src"
           />
         </div>
         <div class="movies__content">
-          <h2 class="movies__title">Alice in Borderland</h2>
+          <h2 class="movies__title">${result.title}</h2>
         </div>
         <div class="movies__details">
-          <div class="movies__year">2010</div>
+          <div class="movies__year">${result.release_date}</div>
           <div class="movies__rating">
-            <span>6.5</span>
+            <span>${result.vote_average}</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
               <path
                 d="m12 .587 3.668 7.568L24 9.306l-6.064 5.828 1.48 8.279L12 19.446l-7.417 3.967 1.481-8.279L0 9.306l8.332-1.151z"
