@@ -10,7 +10,7 @@
     border-radius: 5px;
     height: auto;
     width: 20rem;
-    pointer-events: none;
+    // pointer-events: none;
   }
   &__content {
     padding-top: 2rem;
@@ -29,4 +29,8 @@
       padding-right: 1rem;
     }
   }
+}
+
+.movie__img {
+  pointer-events: none;
 }

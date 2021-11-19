@@ -6,13 +6,14 @@ const API_KEY = "c1018a330183f93ffcc6df16fbfe581f";
 Listeners
 */
 const body = document.querySelector("body");
-// const linkList = [...document.querySelectorAll(".movies__card")];
+const linkList = [...document.querySelectorAll(".movies__card")];
 const backBtn = document.querySelector(".back__button");
 
 // linkList.map((list) => {
 //   list.addEventListener("click", (e) => {
 //     e.preventDefault();
 //     body.classList.toggle("is-active");
+//     console.log(e);
 //     // body.style = "display:none;";
 //   });
 // });
@@ -35,28 +36,35 @@ let resultsContent = "";
 /**
  * DETAILS PAGE
  */
-// const linkList = document.querySelector(".movies__card");
 
-// movies.addEventListener("click", (e) => {
-//   if (e.target.children) {
-//     const tryLang = e.target.children;
+movies.addEventListener("click", (e) => {
+  if (e.target.classList.contains("movies__card")) {
+    console.log(e.target);
+  }
+  // if (e.target.children) {
+  //   console.log(e);
+  // }
+  // console.log(e);
+  // console.log(e);
+  // if (e.target.children) {
+  //   const tryLang = e.target.children;
 
-//     e.preventDefault();
-//     body.classList.toggle("is-active");
-// const movieId = e.target.getAttribute("data-id");
-//     const detailsQuery = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`;
-//     console.log("cloked", movieId);
-//     console.log(detailsQuery);
-//   }
-//   // console.log("cloked", tryLang);
-// });
+  //   e.preventDefault();
+  //   body.classList.toggle("is-active");
+  //   const movieId = e.target.getAttribute("data-id");
+  //   const detailsQuery = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`;
+  //   console.log("cloked", movieId);
+  //   console.log(detailsQuery);
+  // }
+  // console.log("cloked", tryLang);
+});
 
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const inputValue = searchInput.value;
   const searchQuery = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${inputValue}&page=1&include_adult=false`;
-  // console.log("sumbitted", searchQuery);
+  console.log("sumbitted", searchQuery);
   axios
     .get(searchQuery)
     .then((response) => {
@@ -67,7 +75,7 @@ searchForm.addEventListener("submit", (e) => {
       results.map((result) => {
         // const year = result.release_date.split("-")[1];
 
-        resultsContent += `      <a href="#" class="movies__card" id = "${result.id}">
+        resultsContent += `      <a href="#" class="movies__card" data-id = "${result.id}">
         <div class="movie__img">
           <img
             src="https://image.tmdb.org/t/p/w500/${result.poster_path}"
@@ -92,10 +100,8 @@ searchForm.addEventListener("submit", (e) => {
       </a>`;
       });
       movies.innerHTML = resultsContent;
+
       console.log("data", response);
-      movies.addEventListener("click", (e) => {
-        console.log("ge");
-      });
     })
     .catch((error) => {
       console.log(error);

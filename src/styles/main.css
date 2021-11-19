@@ -31,6 +31,7 @@ img {
   width: 100%;
   height: 100%;
   border-radius: inherit;
+  pointer-events: none;
 }
 
 button {
@@ -179,7 +180,6 @@ nav {
   border-radius: 5px;
   height: auto;
   width: 20rem;
-  pointer-events: none;
 }
 
 .movies__content {
@@ -201,6 +201,10 @@ nav {
 
 .movies__rating span {
   padding-right: 1rem;
+}
+
+.movie__img {
+  pointer-events: none;
 }
 
 .back__button,
