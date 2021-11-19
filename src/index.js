@@ -1,6 +1,7 @@
 "use strict";
 
 const API_KEY = "c1018a330183f93ffcc6df16fbfe581f";
+const imgUrl = "https://image.tmdb.org/t/p/w500";
 
 /*
 Listeners
@@ -33,13 +34,64 @@ const movies = document.querySelector(".movies");
 const searchInput = document.querySelector(".search__input");
 // const moviesC = document.querySelector('')
 let resultsContent = "";
+let detailsContent = "";
 /**
  * DETAILS PAGE
  */
 
+const info = document.querySelector(".info");
+
 movies.addEventListener("click", (e) => {
   if (e.target.classList.contains("movies__card")) {
-    console.log(e.target);
+    //  open details page
+    e.preventDefault();
+    body.classList.toggle("is-active");
+
+    const movieId = e.target.getAttribute("data-id");
+    const detailsQuery = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`;
+
+    console.log(detailsQuery);
+    axios
+      .get(detailsQuery)
+      .then((response) => {
+        const details = response.data;
+        detailsContent += `
+        <div class="info__img">
+          <img
+            src="${imgUrl}/${details.poster_path}"
+            alt="movie-image"
+            class="movies__img-src"
+          />
+        </div>
+        <div class="info__name">
+          <h1 class="info__title">${details.title}</h1>
+          <div class="duration">
+            <i class="fas fa-clock"></i><span class="duration">96 min</span>
+          </div>
+        </div>
+
+        <!-- about -->
+        <div class="about">
+          <h2>About</h2>
+          <p>${details.tagline}
+          </p>
+          
+          <div class="genre-wrapper">
+            <div class="genre__role">
+              Genre: <a href="" class="genre__role--title">Action</a>
+            </div>
+            <div class="genre__role">
+              Cast: <a href="" class="genre__role--title">Asahina Aya</a>
+              <a href="" class="genre__role--title">Tao Tsuchiya</a>
+            </div>
+          </div>
+          <p>${details.overview}</p>
+        </div>`;
+        info.innerHTML = detailsContent;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
   // if (e.target.children) {
   //   console.log(e);
@@ -51,8 +103,6 @@ movies.addEventListener("click", (e) => {
 
   //   e.preventDefault();
   //   body.classList.toggle("is-active");
-  //   const movieId = e.target.getAttribute("data-id");
-  //   const detailsQuery = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`;
   //   console.log("cloked", movieId);
   //   console.log(detailsQuery);
   // }
@@ -78,7 +128,7 @@ searchForm.addEventListener("submit", (e) => {
         resultsContent += `      <a href="#" class="movies__card" data-id = "${result.id}">
         <div class="movie__img">
           <img
-            src="https://image.tmdb.org/t/p/w500/${result.poster_path}"
+            src="${imgUrl}/${result.poster_path}"
             alt="movie-image"
             class="movies__img-src"
           />
