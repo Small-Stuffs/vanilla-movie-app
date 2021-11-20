@@ -3,6 +3,7 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin: 1rem;
+  display: none;
   &__card {
     background-color: $secondary-color;
     padding: 1rem;

@@ -171,6 +171,7 @@ nav {
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin: 1rem;
+  display: none;
 }
 
 .movies__card {

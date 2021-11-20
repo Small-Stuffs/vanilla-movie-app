@@ -32,6 +32,7 @@ backBtn.addEventListener("click", function () {
 const searchForm = document.querySelector(".search__form");
 const movies = document.querySelector(".movies");
 const searchInput = document.querySelector(".search__input");
+const loader = document.querySelector(".loader");
 // const moviesC = document.querySelector('')
 let resultsContent = "";
 let detailsContent = "";
@@ -151,6 +152,7 @@ searchForm.addEventListener("submit", (e) => {
       });
       movies.innerHTML = resultsContent;
 
+      movies.style.display = "flex";
       console.log("data", response);
     })
     .catch((error) => {
