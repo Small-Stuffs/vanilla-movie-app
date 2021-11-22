@@ -1,6 +1,6 @@
-#Vanilla-Movie-App
+# Vanilla-Movie-App
 
-##Preview
+## Preview
 
 ![Results](https://user-images.githubusercontent.com/73617530/142814929-90e3094d-2dc2-4dd8-bea0-d0c9f29e0be2.png)
 
